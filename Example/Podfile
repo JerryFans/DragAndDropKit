@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'DragAndDropKit_Example' do
+  pod 'DragAndDropKit', :path => '../'
+
+  target 'DragAndDropKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
