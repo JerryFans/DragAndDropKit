@@ -4,6 +4,8 @@ platform :ios, '9.0'
 
 target 'DragAndDropKit_Example' do
   pod 'DragAndDropKit', :path => '../'
+  pod 'JFPopup', '~> 1.4.0'
+  pod 'SnapKit'
 
   target 'DragAndDropKit_Tests' do
     inherit! :search_paths

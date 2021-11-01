@@ -1,0 +1,6 @@
+framework module DragAndDropKit {
+  umbrella header "DragAndDropKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

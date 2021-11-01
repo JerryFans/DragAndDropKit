@@ -1,0 +1,31 @@
+PODS:
+  - DragAndDropKit (0.1.0)
+  - JFPopup (1.4.0):
+    - JRBaseKit (~> 0.9.0)
+  - JRBaseKit (0.9.0)
+  - SnapKit (4.2.0)
+
+DEPENDENCIES:
+  - DragAndDropKit (from `../`)
+  - JFPopup (~> 1.4.0)
+  - SnapKit
+
+SPEC REPOS:
+  trunk:
+    - JFPopup
+    - JRBaseKit
+    - SnapKit
+
+EXTERNAL SOURCES:
+  DragAndDropKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  DragAndDropKit: 26f346bd84969e0b01aae40125c4eedca0b5dea6
+  JFPopup: ec02a2c1574d90cb54d182aec9213034735da70e
+  JRBaseKit: f4a95149f6b68417348e63065d384f22501cf2ce
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+
+PODFILE CHECKSUM: 68378251daf985c1de2d109a8db23ce740738631
+
+COCOAPODS: 1.10.2
