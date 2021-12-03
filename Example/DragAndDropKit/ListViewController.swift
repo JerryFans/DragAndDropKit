@@ -16,13 +16,13 @@ class DropItemCell: UICollectionViewCell {
             guard let source = source else { return }
             self.titleLabel.isHidden = true
             self.imageView.isHidden = true
-            if let img = source.image {
-                self.imageView.image = img
+            if  let imageSource = source as? ImageDropSource {
+                self.imageView.image = imageSource.image
                 self.imageView.isHidden = false
-            } else if let text = source.text {
-                self.titleLabel.text = text
+            } else if let textSource = source as? TextDropSource {
+                self.titleLabel.text = textSource.text
                 self.titleLabel.isHidden = false
-            } else if let _ = source.asset {
+            } else if let _ = source as? VideoDropSource {
                 self.titleLabel.text = "视频"
                 self.titleLabel.isHidden = false
             }
@@ -82,6 +82,7 @@ class ListViewController: UIViewController {
         c.register(DropItemCell.self, forCellWithReuseIdentifier: DropItemCell.identify())
         c.delegate = self
         c.dataSource = self
+        c.backgroundColor = .white
         
         if #available(iOS 11.0, *) {
             c.dragInteractionEnabled = true
@@ -105,9 +106,9 @@ extension ListViewController: UICollectionViewDelegate,UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let source = self.dropVM.sources[indexPath.item]
-        if let asset = source.asset {
+        if let videoSource = source as? VideoDropSource {
             let vc = VideoViewController()
-            vc.asset = asset
+            vc.asset = videoSource.asset
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
