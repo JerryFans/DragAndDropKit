@@ -44,6 +44,11 @@ extension DropViewModel {
     
     @available(iOS 11.0, *)
     public func canHandle(_ session: UIDropSession) -> Bool {
+        return Self.canHandle(session)
+    }
+    
+    @available(iOS 11.0, *)
+    public static func canHandle(_ session: UIDropSession) -> Bool {
         return session.hasItemsConforming(toTypeIdentifiers: [kUTTypeImage as String]) || session.hasItemsConforming(toTypeIdentifiers: [kUTTypePlainText as String])
         || session.hasItemsConforming(toTypeIdentifiers: [kUTTypeQuickTimeMovie as String])
         || session.hasItemsConforming(toTypeIdentifiers: [kUTTypeMPEG4 as String])

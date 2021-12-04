@@ -12,7 +12,6 @@
 		0796336CEFF601AE1247F220908D6122 /* LayoutConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10C9DC7EB224DC3BEEF8516BEE4C693 /* LayoutConstraintItem.swift */; };
 		07C2A8D8E0CC8EAB5F37E03332631748 /* ConstraintMakerExtendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75B323C4A76095CC9A3FEED6F9721CE /* ConstraintMakerExtendable.swift */; };
 		084D55B0D2DC8A564EBF299A2725B39B /* DropViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A092898BC12E69B5BC92E9F22BDED927 /* DropViewModel.swift */; };
-		0C4327FAD09E8AE797D24C988649475E /* DragAndDropView+Drag.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0F96E312793EDE51354D44A89BDABE /* DragAndDropView+Drag.swift */; };
 		1422F4D1C7597A7641CB3B433295AE1C /* ConstraintConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8BBB4115DE09110F0EC2CA3A104C89 /* ConstraintConfig.swift */; };
 		16D24E170C5A4E3991F9C378259C9E43 /* UILayoutSupport+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C3EC8AB4D5D73B5E5A98E66A60B39C /* UILayoutSupport+Extensions.swift */; };
 		187AEAEFABA30C23783DE0BA67CDB53F /* SnapKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A4252E58E1441CEA0AFCC6A5CD2C34 /* SnapKit-dummy.m */; };
@@ -50,7 +49,6 @@
 		71F29EB3760A96F80093EA6CB56EB6BE /* JFAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD4477C84B0BA4D755B51F4DBBC17D6 /* JFAlertAction.swift */; };
 		72744A9122CF44B2DEE0151B85CAB0CC /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD6AB89408CEE6BC92BC33516E7A9A /* LayoutConstraint.swift */; };
 		7853E56C9E4FC5034DA3C000E93D0B84 /* JFAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE9FEF7147EF69D2F1E33D7B2E1497F /* JFAlertView.swift */; };
-		79D473926C075E2D610E182BEA441B72 /* DragAndDropView+Drop.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6995CF3D6CC3353034E590B190DC8E7 /* DragAndDropView+Drop.swift */; };
 		7A7E4189DEE2CD9B82CFBEA1C949BE15 /* ConstraintViewDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CF5864B541AFC962ADA720CF030362 /* ConstraintViewDSL.swift */; };
 		7A9288D59082C3A50FBC1F48798FDECB /* JFToastView+Objc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D04985D6FC23CB9FC628E7399F2060 /* JFToastView+Objc.swift */; };
 		7B34A47D478C66575FF129073B99FD82 /* JF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7AB9EB9388BA225ACF60C42A35F4B /* JF.swift */; };
@@ -60,7 +58,7 @@
 		8DC592B2BF5DA6DF3458813635802A4A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		8F488574ECEADDC9413AE8903A76AFDA /* ConstraintLayoutGuide+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE49AC8B2B71BDC669375F4D33A7288A /* ConstraintLayoutGuide+Extensions.swift */; };
 		94FE297EF5474933073D62936D9A7224 /* ConstraintPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854CF4CCEEC5790EF19A5E1552E0AD09 /* ConstraintPriority.swift */; };
-		96E6CC190D44A16A54E896EDF4E9CBA4 /* DragAndDropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1140525A18436F803979266DCC259096 /* DragAndDropView.swift */; };
+		96E6CC190D44A16A54E896EDF4E9CBA4 /* UIView+DragAndDrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1140525A18436F803979266DCC259096 /* UIView+DragAndDrop.swift */; };
 		9825456B68AAF3CD9F1137377D738A9D /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C74F6CA3DDDF78D1E78E3759084E189 /* Constraint.swift */; };
 		99BA19092DA09C3A52F275A0B367EC04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		9AD08B51D408D58639348CC577DD988B /* ConstraintView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3721E8FD1F18FE09D41FC1FC487A589E /* ConstraintView+Extensions.swift */; };
@@ -161,7 +159,7 @@
 		0C74F6CA3DDDF78D1E78E3759084E189 /* Constraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constraint.swift; path = Source/Constraint.swift; sourceTree = "<group>"; };
 		104FF5F2B0669EF87DD679764E9117B2 /* ConstraintLayoutSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupport.swift; path = Source/ConstraintLayoutSupport.swift; sourceTree = "<group>"; };
 		10FB7EBDA7D8559DDE03EB064C431804 /* JFAlertView+PopupView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "JFAlertView+PopupView.swift"; path = "JFPopup/Classes/General/Alert/JFAlertView+PopupView.swift"; sourceTree = "<group>"; };
-		1140525A18436F803979266DCC259096 /* DragAndDropView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DragAndDropView.swift; sourceTree = "<group>"; };
+		1140525A18436F803979266DCC259096 /* UIView+DragAndDrop.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+DragAndDrop.swift"; sourceTree = "<group>"; };
 		137474B05D81FE628DF867C2F8C01704 /* DragAndDropCollectionView+Drag.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DragAndDropCollectionView+Drag.swift"; sourceTree = "<group>"; };
 		1468177F5793B497D39BB7FB75644A52 /* JFPopup.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JFPopup.debug.xcconfig; sourceTree = "<group>"; };
 		19285A2C2B833B74371C4596F5930C73 /* Pods-DragAndDropKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DragAndDropKit_Example-frameworks.sh"; sourceTree = "<group>"; };
@@ -176,7 +174,7 @@
 		20DD4334CE38E56379721ECCB4BF8B5E /* Pods-DragAndDropKit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-DragAndDropKit_Tests.modulemap"; sourceTree = "<group>"; };
 		248DBDB1F5D9AB8FA151E055F404C0D4 /* SnapKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.release.xcconfig; sourceTree = "<group>"; };
 		25B48DECFEA5C42AD06D1C7CC7BEE42C /* JRBaseKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JRBaseKit.release.xcconfig; sourceTree = "<group>"; };
-		266279CE3E03A4AEAEEF26D88E7C972C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		266279CE3E03A4AEAEEF26D88E7C972C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		2814EAEFFEBFEFDE1E5012C0A19632A7 /* Pods-DragAndDropKit_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-DragAndDropKit_Tests-dummy.m"; sourceTree = "<group>"; };
 		2A7EE7BEFA98E0D7D166CBF744855F1A /* Pods-DragAndDropKit_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DragAndDropKit_Tests-Info.plist"; sourceTree = "<group>"; };
 		2DFD483FA4BD867ED0D3AD16F7A07506 /* JRBaseKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JRBaseKit.modulemap; sourceTree = "<group>"; };
@@ -203,7 +201,7 @@
 		57C3EAFD99EF581C4A77CE5DD65AFCFD /* Pods-DragAndDropKit_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-DragAndDropKit_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		57F5A594016ED243457AA401F645A97B /* SnapKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SnapKit-Info.plist"; sourceTree = "<group>"; };
 		5B7DBC4709701DBC49FA92A941F07687 /* JFPopup-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JFPopup-umbrella.h"; sourceTree = "<group>"; };
-		60993DF7B9B07CBDCA867A1858A81736 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		60993DF7B9B07CBDCA867A1858A81736 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		61DFE9E0E904837644377E28238E6A12 /* Pods-DragAndDropKit_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DragAndDropKit_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		631D18BADA8C5082C2AF2FEB828DA679 /* ConstraintRelatableTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintRelatableTarget.swift; path = Source/ConstraintRelatableTarget.swift; sourceTree = "<group>"; };
 		68B79EE4E6057A737D2DD573119D433B /* JFToastView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JFToastView.swift; path = JFPopup/Classes/General/Toast/JFToastView.swift; sourceTree = "<group>"; };
@@ -235,12 +233,11 @@
 		982F85DBDF079784828856A598D5ACC6 /* JFPopupController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JFPopupController.swift; path = JFPopup/Classes/Core/JFPopupController.swift; sourceTree = "<group>"; };
 		98883E1643718B40C5D43D614957C18F /* Pods-DragAndDropKit_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-DragAndDropKit_Example"; path = Pods_DragAndDropKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D3C71D967466082A4B40FEA29C61E5F /* JFPopup-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JFPopup-dummy.m"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9D9524DFEDA8E90072117137BE047D2C /* DragAndDropTableView+Drag.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DragAndDropTableView+Drag.swift"; sourceTree = "<group>"; };
 		9E5734DC0248B6C4A4581B548574DE37 /* ConstraintOffsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintOffsetTarget.swift; path = Source/ConstraintOffsetTarget.swift; sourceTree = "<group>"; };
 		A078E847FF4E4D3622845091F6231FBF /* Pods-DragAndDropKit_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-DragAndDropKit_Tests"; path = Pods_DragAndDropKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A092898BC12E69B5BC92E9F22BDED927 /* DropViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DropViewModel.swift; path = DragAndDropKit/Classes/DropViewModel.swift; sourceTree = "<group>"; };
-		A6995CF3D6CC3353034E590B190DC8E7 /* DragAndDropView+Drop.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DragAndDropView+Drop.swift"; sourceTree = "<group>"; };
 		A7B4E36CED6C19452CD07F7FCDE6B513 /* Pods-DragAndDropKit_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-DragAndDropKit_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		A94CF2FC3606435C8BE53CBF03B1B27F /* ConstraintMultiplierTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMultiplierTarget.swift; path = Source/ConstraintMultiplierTarget.swift; sourceTree = "<group>"; };
 		AA793F2A7E2BD599D710331189266A0B /* Size+Extenison.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Size+Extenison.swift"; path = "Classes/Size+Extenison.swift"; sourceTree = "<group>"; };
@@ -263,10 +260,9 @@
 		CB99A89C35B072D96C85729100996A07 /* Pods-DragAndDropKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DragAndDropKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		D59552405FA3267AE4A238E2959E0449 /* ConstraintMakerPriortizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerPriortizable.swift; path = Source/ConstraintMakerPriortizable.swift; sourceTree = "<group>"; };
 		D9D342DE94B72B01283A39138EE6ED63 /* DragAndDropKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DragAndDropKit-prefix.pch"; sourceTree = "<group>"; };
-		DA0F96E312793EDE51354D44A89BDABE /* DragAndDropView+Drag.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DragAndDropView+Drag.swift"; sourceTree = "<group>"; };
 		DA86E30640A3B7C194FEF5CE6F263320 /* fail@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "fail@2x.png"; path = "JFPopup/Assets/fail@2x.png"; sourceTree = "<group>"; };
 		DAC1D57051B84FFFC2796CAAA3913D8A /* Pods-DragAndDropKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-DragAndDropKit_Example-umbrella.h"; sourceTree = "<group>"; };
-		DFDE49EC3F3E1C019471478CE75842C4 /* DragAndDropKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = DragAndDropKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		DFDE49EC3F3E1C019471478CE75842C4 /* DragAndDropKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = DragAndDropKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		DFE34EF4AD1ABE56D387983EE7139883 /* ConstraintAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintAttributes.swift; path = Source/ConstraintAttributes.swift; sourceTree = "<group>"; };
 		E10C9DC7EB224DC3BEEF8516BEE4C693 /* LayoutConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraintItem.swift; path = Source/LayoutConstraintItem.swift; sourceTree = "<group>"; };
 		E66990DEE09DA7C6CF41ADDDAF215F61 /* DragAndDropKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DragAndDropKit-dummy.m"; sourceTree = "<group>"; };
@@ -398,7 +394,6 @@
 				55C3EC8AB4D5D73B5E5A98E66A60B39C /* UILayoutSupport+Extensions.swift */,
 				35C0211BC75B08700DB16C6A41D7A2E4 /* Support Files */,
 			);
-			name = SnapKit;
 			path = SnapKit;
 			sourceTree = "<group>";
 		};
@@ -470,7 +465,6 @@
 				B663791A3161A3F58103FC05DCE58BC6 /* Resources */,
 				9812AA1F6B59290E768CBBF561B94832 /* Support Files */,
 			);
-			name = JFPopup;
 			path = JFPopup;
 			sourceTree = "<group>";
 		};
@@ -485,9 +479,7 @@
 		656A9DD081E16C09B05D0804C754516C /* UIView */ = {
 			isa = PBXGroup;
 			children = (
-				1140525A18436F803979266DCC259096 /* DragAndDropView.swift */,
-				DA0F96E312793EDE51354D44A89BDABE /* DragAndDropView+Drag.swift */,
-				A6995CF3D6CC3353034E590B190DC8E7 /* DragAndDropView+Drop.swift */,
+				1140525A18436F803979266DCC259096 /* UIView+DragAndDrop.swift */,
 			);
 			name = UIView;
 			path = DragAndDropKit/Classes/UIView;
@@ -634,7 +626,6 @@
 				1DA07BFC2A7E0AFA1E4C4EC989E0AC2F /* UIView+JFRect.swift */,
 				A55666B693DE61D5240D63525B62C354 /* Support Files */,
 			);
-			name = JRBaseKit;
 			path = JRBaseKit;
 			sourceTree = "<group>";
 		};
@@ -1041,9 +1032,7 @@
 				9E3D64E88D48F8F72BAE36A61163045D /* DragAndDropTableView.swift in Sources */,
 				C45F90EA61B68AF9B861B0FAAD1B21E8 /* DragAndDropTableView+Drag.swift in Sources */,
 				5052CB69DC6B27B330BC24921754CEB6 /* DragAndDropTableView+Drop.swift in Sources */,
-				96E6CC190D44A16A54E896EDF4E9CBA4 /* DragAndDropView.swift in Sources */,
-				0C4327FAD09E8AE797D24C988649475E /* DragAndDropView+Drag.swift in Sources */,
-				79D473926C075E2D610E182BEA441B72 /* DragAndDropView+Drop.swift in Sources */,
+				96E6CC190D44A16A54E896EDF4E9CBA4 /* UIView+DragAndDrop.swift in Sources */,
 				B5E694D5E5F0F625980B1A41B7F81D1C /* DropSource.swift in Sources */,
 				084D55B0D2DC8A564EBF299A2725B39B /* DropViewModel.swift in Sources */,
 			);
@@ -1542,8 +1531,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};

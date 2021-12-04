@@ -10,6 +10,7 @@ import UIKit
 import MobileCoreServices
 import JFPopup
 import Photos
+import DragAndDropKit
 
 class CustomViewController: UIViewController {
     
@@ -21,18 +22,35 @@ class CustomViewController: UIViewController {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.borderColor = UIColor.red.cgColor
-        if #available(iOS 11.0, *) {
-            let dragInteraction = UIDragInteraction(delegate: self)
-            imageView.addInteraction(dragInteraction)
-            let dropInteraction = UIDropInteraction(delegate: self)
-            view.addInteraction(dropInteraction)
-        }
+//        if #available(iOS 11.0, *) {
+//            imageView.dragAndDrop.enabledDrop()
+//        }
+//        imageView.dragAndDrop.
+//        if #available(iOS 11.0, *) {
+//            let dragInteraction = UIDragInteraction(delegate: self)
+//            imageView.addInteraction(dragInteraction)
+//            let dropInteraction = UIDropInteraction(delegate: self)
+//            view.addInteraction(dropInteraction)
+//        }
         
         return imageView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if #available(iOS 11.0, *) {
+            self.view.dragAndDrop.enabledDrop()
+            self.view.dragAndDrop.didReceivedDropSource = { [weak self] dropSources in
+                for (_, item) in dropSources.enumerated() {
+                    if let imageSource = item as? ImageDropSource {
+                        self?.imageView.image = imageSource.image
+                        break
+                    }
+                }
+            }
+        } else {
+            // Fallback on earlier versions
+        }
         self.view.backgroundColor = .white
         self.view.addSubview(self.imageView)
     }
