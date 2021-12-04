@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import DragAndDropKit
 
 class DropItemCell: UICollectionViewCell {
     
@@ -69,28 +70,20 @@ class DropItemCell: UICollectionViewCell {
 
 class ListViewController: UIViewController {
     
-    var dropVM: DropViewModel = DropViewModel()
-    
-    lazy var collectionView: UICollectionView = {
+    lazy var collectionView: DragAndDropCollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 15
         layout.minimumInteritemSpacing = 15
         var width: CGFloat =  (CGSize.jf.screenWidth() - 30 - (15 * 2)) / 3
         layout.itemSize = CGSize(width: width, height: width)
         layout.sectionInset = UIEdgeInsets.init(top: 0, left: 15, bottom: 0, right: 15)
-        let c = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        let c = DragAndDropCollectionView(frame: self.view.frame, collectionViewLayout: layout)
         c.register(DropItemCell.self, forCellWithReuseIdentifier: DropItemCell.identify())
         c.delegate = self
         c.dataSource = self
         c.backgroundColor = .white
-        
-        if #available(iOS 11.0, *) {
-            c.dragInteractionEnabled = true
-            c.dragDelegate = self
-            c.dropDelegate = self
-        } else {
-            // Fallback on earlier versions
-        }
+        c.enabledDrag()
+        c.enabledDrop()
         return c
     }()
 
@@ -105,7 +98,7 @@ class ListViewController: UIViewController {
 extension ListViewController: UICollectionViewDelegate,UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let source = self.dropVM.sources[indexPath.item]
+        let source = self.collectionView.dragAndDropVM.sources[indexPath.item]
         if let videoSource = source as? VideoDropSource {
             let vc = VideoViewController()
             vc.asset = videoSource.asset
@@ -114,22 +107,18 @@ extension ListViewController: UICollectionViewDelegate,UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.dropVM.sources.count
+        return self.collectionView.dragAndDropVM.sources.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DropItemCell.identify(), for: indexPath) as! DropItemCell
-        cell.source = self.dropVM.sources[indexPath.item]
+        cell.source =  self.collectionView.dragAndDropVM.sources[indexPath.item]
         return cell
     }
     
     // MARK: - UITableViewDelegate
     func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
         true
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        dropVM.moveItem(at: sourceIndexPath.item, to: destinationIndexPath.item)
     }
     
     

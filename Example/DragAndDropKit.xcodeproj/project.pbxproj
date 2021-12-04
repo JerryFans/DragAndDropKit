@@ -14,13 +14,9 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		B4EE5976272D526C00EFD761 /* DropSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE5975272D526C00EFD761 /* DropSource.swift */; };
 		B4EE597F272E9C6800EFD761 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE597E272E9C6800EFD761 /* CustomViewController.swift */; };
 		B4EE5981272E9F9B00EFD761 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE5980272E9F9B00EFD761 /* ListViewController.swift */; };
-		B4EE5983272EA28A00EFD761 /* ListViewController+Drop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE5982272EA28A00EFD761 /* ListViewController+Drop.swift */; };
-		B4EE5985272EA31E00EFD761 /* DropViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE5984272EA31E00EFD761 /* DropViewModel.swift */; };
 		B4EE5987272ED47C00EFD761 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE5986272ED47C00EFD761 /* VideoViewController.swift */; };
-		B4EE598B272ED7FB00EFD761 /* ListViewController+Drag.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE598A272ED7FB00EFD761 /* ListViewController+Drag.swift */; };
 		C6CCDFC34AA1275FCABDF0E5 /* Pods_DragAndDropKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59126DCE3CC9E5C492B6FE54 /* Pods_DragAndDropKit_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,13 +48,9 @@
 		7C86B17F4ABB0A23F043616F /* Pods-DragAndDropKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DragAndDropKit_Tests.debug.xcconfig"; path = "Target Support Files/Pods-DragAndDropKit_Tests/Pods-DragAndDropKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		927B9A548D2539266F2D2684 /* Pods-DragAndDropKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DragAndDropKit_Tests.release.xcconfig"; path = "Target Support Files/Pods-DragAndDropKit_Tests/Pods-DragAndDropKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		AB90A735895DAC116A96070E /* DragAndDropKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = DragAndDropKit.podspec; path = ../DragAndDropKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		B4EE5975272D526C00EFD761 /* DropSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropSource.swift; sourceTree = "<group>"; };
 		B4EE597E272E9C6800EFD761 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		B4EE5980272E9F9B00EFD761 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		B4EE5982272EA28A00EFD761 /* ListViewController+Drop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListViewController+Drop.swift"; sourceTree = "<group>"; };
-		B4EE5984272EA31E00EFD761 /* DropViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropViewModel.swift; sourceTree = "<group>"; };
 		B4EE5986272ED47C00EFD761 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
-		B4EE598A272ED7FB00EFD761 /* ListViewController+Drag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListViewController+Drag.swift"; sourceTree = "<group>"; };
 		CE50F515984706B18FCE590B /* Pods-DragAndDropKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DragAndDropKit_Example.release.xcconfig"; path = "Target Support Files/Pods-DragAndDropKit_Example/Pods-DragAndDropKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		D6E459F52BB9212B73B27B8E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,10 +104,6 @@
 				B4EE597E272E9C6800EFD761 /* CustomViewController.swift */,
 				B4EE5980272E9F9B00EFD761 /* ListViewController.swift */,
 				B4EE5986272ED47C00EFD761 /* VideoViewController.swift */,
-				B4EE5975272D526C00EFD761 /* DropSource.swift */,
-				B4EE5982272EA28A00EFD761 /* ListViewController+Drop.swift */,
-				B4EE598A272ED7FB00EFD761 /* ListViewController+Drag.swift */,
-				B4EE5984272EA31E00EFD761 /* DropViewModel.swift */,
 				607FACD41AFB9204008FA782 /* Info.plist */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
@@ -361,14 +349,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
-				B4EE5983272EA28A00EFD761 /* ListViewController+Drop.swift in Sources */,
 				B4EE597F272E9C6800EFD761 /* CustomViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
-				B4EE598B272ED7FB00EFD761 /* ListViewController+Drag.swift in Sources */,
 				B4EE5987272ED47C00EFD761 /* VideoViewController.swift in Sources */,
 				B4EE5981272E9F9B00EFD761 /* ListViewController.swift in Sources */,
-				B4EE5976272D526C00EFD761 /* DropSource.swift in Sources */,
-				B4EE5985272EA31E00EFD761 /* DropViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,9 +1,8 @@
 //
 //  DropSource.swift
-//  DragAndDropKit_Example
+//  DragAndDropKit
 //
-//  Created by 逸风 on 2021/10/30.
-//  Copyright © 2021 CocoaPods. All rights reserved.
+//  Created by 逸风 on 2021/12/3.
 //
 
 import Foundation
@@ -17,10 +16,10 @@ enum DropSourceError: Error {
     case invalidTypeIdentifier
 }
 
-final class ImageDropSource: DropSource {
-    var image: UIImage
+public class ImageDropSource: DropSource {
+    public var image: UIImage
     
-    init(image: UIImage) {
+    public init(image: UIImage) {
         self.image = image
         super.init()
         typeIdentifier = kUTTypeImage as String
@@ -29,7 +28,7 @@ final class ImageDropSource: DropSource {
         }
     }
     
-    override func loadData(withTypeIdentifier typeIdentifier: String, forItemProviderCompletionHandler completionHandler: @escaping (Data?, Error?) -> Void) -> Progress? {
+    public override func loadData(withTypeIdentifier typeIdentifier: String, forItemProviderCompletionHandler completionHandler: @escaping (Data?, Error?) -> Void) -> Progress? {
         let progress = Progress(totalUnitCount: 100)
         switch typeIdentifier {
         case kUTTypePNG as NSString as String:
@@ -52,16 +51,16 @@ final class ImageDropSource: DropSource {
     }
 }
 
-final class TextDropSource: DropSource {
-    var text: String
+public class TextDropSource: DropSource {
+    public var text: String
     
-    override func loadData(withTypeIdentifier typeIdentifier: String, forItemProviderCompletionHandler completionHandler: @escaping (Data?, Error?) -> Void) -> Progress? {
+    public override func loadData(withTypeIdentifier typeIdentifier: String, forItemProviderCompletionHandler completionHandler: @escaping (Data?, Error?) -> Void) -> Progress? {
         let progress = Progress(totalUnitCount: 100)
         completionHandler(text.data(using: .utf8), nil)
         return progress
     }
     
-    init(text: String) {
+    public init(text: String) {
         self.text = text
         super.init()
         typeIdentifier = kUTTypePlainText as String
@@ -71,11 +70,11 @@ final class TextDropSource: DropSource {
     }
 }
 
-final class VideoDropSource: DropSource {
+public class VideoDropSource: DropSource {
     
-    var asset: AVURLAsset
+    public var asset: AVURLAsset
     
-    override func loadData(withTypeIdentifier typeIdentifier: String, forItemProviderCompletionHandler completionHandler: @escaping (Data?, Error?) -> Void) -> Progress? {
+    public override func loadData(withTypeIdentifier typeIdentifier: String, forItemProviderCompletionHandler completionHandler: @escaping (Data?, Error?) -> Void) -> Progress? {
         let progress = Progress(totalUnitCount: 100)
         switch typeIdentifier {
         case kUTTypeMPEG4 as NSString as String,kUTTypeQuickTimeMovie as NSString as String:
@@ -91,7 +90,7 @@ final class VideoDropSource: DropSource {
         return progress
     }
     
-    init(asset: AVURLAsset, typeIdentifier: String) {
+    public init(asset: AVURLAsset, typeIdentifier: String) {
         self.asset = asset
         super.init()
         self.typeIdentifier = typeIdentifier
@@ -101,10 +100,10 @@ final class VideoDropSource: DropSource {
     }
 }
 
-class DropSource: NSObject {
+public class DropSource: NSObject {
     
-    var writableTypeIdentifiersForItemProvider: [String] = []
-    var typeIdentifier: String = ""
+    public var writableTypeIdentifiersForItemProvider: [String] = []
+    public var typeIdentifier: String = ""
     
     override init() {
         super.init()
@@ -115,17 +114,16 @@ class DropSource: NSObject {
 extension DropSource: NSItemProviderWriting {
     
     @available(iOS 11.0, *)
-    static var writableTypeIdentifiersForItemProvider: [String] {
+    public static var writableTypeIdentifiersForItemProvider: [String] {
         return UIImage.writableTypeIdentifiersForItemProvider +
         [kUTTypePlainText as String,
          kUTTypeQuickTimeMovie as String,
          kUTTypeURL as String,
          kUTTypeText as String,
-         kUTTypeMPEG4 as String,
-         kUTTypeData as String]
+         kUTTypeMPEG4 as String]
     }
     
-    func loadData(withTypeIdentifier typeIdentifier: String, forItemProviderCompletionHandler completionHandler: @escaping (Data?, Error?) -> Void) -> Progress? {
+    public func loadData(withTypeIdentifier typeIdentifier: String, forItemProviderCompletionHandler completionHandler: @escaping (Data?, Error?) -> Void) -> Progress? {
         let progress = Progress(totalUnitCount: 100)
         completionHandler(nil, DropSourceError.invalidTypeIdentifier)
         return progress
@@ -135,7 +133,7 @@ extension DropSource: NSItemProviderWriting {
 
 extension DropSource: NSItemProviderReading {
     
-    static var readableTypeIdentifiersForItemProvider: [String] {
+    public static var readableTypeIdentifiersForItemProvider: [String] {
         return [kUTTypeImage as String,
                 kUTTypePlainText as String,
                 kUTTypeQuickTimeMovie as String,
@@ -144,7 +142,7 @@ extension DropSource: NSItemProviderReading {
                 kUTTypeMPEG4 as String]
     }
     
-    static func object(withItemProviderData data: Data, typeIdentifier: String) throws -> Self {
+    public static func object(withItemProviderData data: Data, typeIdentifier: String) throws -> Self {
         switch typeIdentifier {
         case kUTTypeMPEG4 as NSString as String:
             let tmpDir = NSTemporaryDirectory()

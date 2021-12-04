@@ -1,18 +1,21 @@
 //
 //  DropViewModel.swift
-//  DragAndDropKit_Example
+//  DragAndDropKit
 //
-//  Created by 逸风 on 2021/10/31.
-//  Copyright © 2021 CocoaPods. All rights reserved.
+//  Created by 逸风 on 2021/12/3.
 //
 
 import Foundation
 import UIKit
 import MobileCoreServices
 
-struct DropViewModel {
+public struct DropViewModel {
     
-    private(set) var sources: [DropSource] = [
+    public init() {
+        
+    }
+    
+    public var sources: [DropSource] = [
         ImageDropSource(image: UIImage(named: "template-1")!),
         ImageDropSource(image: UIImage(named: "template-2")!),
         ImageDropSource(image: UIImage(named: "template-3")!),
@@ -25,14 +28,14 @@ struct DropViewModel {
         ImageDropSource(image: UIImage(named: "template-10")!),
     ]
     
-    mutating func moveItem(at sourceIndex: Int, to destinationIndex: Int) {
+    public mutating func moveItem(at sourceIndex: Int, to destinationIndex: Int) {
         guard sourceIndex != destinationIndex else { return }
         let s = sources[sourceIndex]
         sources.remove(at: sourceIndex)
         sources.insert(s, at: destinationIndex)
     }
     
-    mutating func addItem(_ source: DropSource, at index: Int) {
+    public mutating func addItem(_ source: DropSource, at index: Int) {
         sources.insert(source, at: index)
     }
 }
@@ -40,7 +43,7 @@ struct DropViewModel {
 extension DropViewModel {
     
     @available(iOS 11.0, *)
-    func canHandle(_ session: UIDropSession) -> Bool {
+    public func canHandle(_ session: UIDropSession) -> Bool {
         return session.hasItemsConforming(toTypeIdentifiers: [kUTTypeImage as String]) || session.hasItemsConforming(toTypeIdentifiers: [kUTTypePlainText as String])
         || session.hasItemsConforming(toTypeIdentifiers: [kUTTypeQuickTimeMovie as String])
         || session.hasItemsConforming(toTypeIdentifiers: [kUTTypeMPEG4 as String])
@@ -48,7 +51,7 @@ extension DropViewModel {
     }
     
     @available(iOS 11.0, *)
-    func dragItems(for indexPath: IndexPath) -> [UIDragItem] {
+    public func dragItems(for indexPath: IndexPath) -> [UIDragItem] {
         let source = sources[indexPath.row]
         let itemProvider = NSItemProvider(object: source)
         return [

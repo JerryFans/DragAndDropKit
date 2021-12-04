@@ -10,6 +10,7 @@ import UIKit
 import MobileCoreServices
 import JFPopup
 import Photos
+import DragAndDropKit
 
 
 class ViewController: UIViewController {

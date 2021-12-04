@@ -1,23 +1,23 @@
 //
-//  ListViewController+Drop.swift
-//  DragAndDropKit_Example
+//  UICollectionView+Drop.swift
+//  UICollectionView+Drop
 //
-//  Created by 逸风 on 2021/10/31.
-//  Copyright © 2021 CocoaPods. All rights reserved.
+//  Created by 逸风 on 2021/10/29.
 //
 
 import Foundation
 import UIKit
 import JFPopup
-extension ListViewController: UICollectionViewDropDelegate {
+
+extension DragAndDropCollectionView: UICollectionViewDropDelegate {
     
     @available(iOS 11.0, *)
-    func collectionView(_ collectionView: UICollectionView, canHandle session: UIDropSession) -> Bool {
-        return dropVM.canHandle(session)
+    public func collectionView(_ collectionView: UICollectionView, canHandle session: UIDropSession) -> Bool {
+        return dragAndDropVM.canHandle(session)
     }
     
     @available(iOS 11.0, *)
-    func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
+    public func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
         var dropProposal = UICollectionViewDropProposal(operation: .cancel)
         if collectionView.hasActiveDrag {
             dropProposal = UICollectionViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
@@ -29,9 +29,7 @@ extension ListViewController: UICollectionViewDropDelegate {
     
     
     @available(iOS 11.0, *)
-    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
-
-        
+    public func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
         
         let destinationIndexPath: IndexPath
         
@@ -47,7 +45,7 @@ extension ListViewController: UICollectionViewDropDelegate {
             var indexPaths = [IndexPath]()
             for (index, item) in dropSources.enumerated() {
                 let indexPath = IndexPath(item: destinationIndexPath.item + index, section: destinationIndexPath.section)
-                self.dropVM.addItem(item, at: indexPath.item)
+                self.dragAndDropVM.addItem(item, at: indexPath.item)
                 indexPaths.append(indexPath)
             }
             collectionView.insertItems(at: indexPaths)
