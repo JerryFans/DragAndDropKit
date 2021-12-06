@@ -56,9 +56,9 @@ extension DropViewModel {
     }
     
     @available(iOS 11.0, *)
-    public static func canHandle(with options: [DropSourceOption], session: UIDropSession) -> Bool {
+    public static func canHandle(with supportSources: [DropSourceOption], session: UIDropSession) -> Bool {
         var canHandle = false
-        for option in options {
+        for option in supportSources {
             switch option {
             case .rawImage:
                 canHandle = session.hasItemsConforming(toTypeIdentifiers: [kUTTypeImage as String])

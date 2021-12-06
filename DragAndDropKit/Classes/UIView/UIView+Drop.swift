@@ -64,8 +64,8 @@ extension UIView: UIDropInteractionDelegate {
     
     @available(iOS 11.0, *)
     public func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool {
-        if self.drop.options.count > 0 {
-            return DropViewModel.canHandle(with: self.drop.options, session: session)
+        if self.drop.supportSources.count > 0 {
+            return DropViewModel.canHandle(with: self.drop.supportSources, session: session)
         }
         return DropViewModel.canHandle(session)
     }

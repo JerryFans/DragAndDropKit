@@ -34,7 +34,7 @@ public typealias DidReceivedDropSource = ([DropSource]) -> ()
 
 extension Drop where Base: UIView {
     
-    public var options: [DropSourceOption] {
+    public var supportSources: [DropSourceOption] {
         set {
             objc_setAssociatedObject(base, &associatedObjectDropSourceOption, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
         }

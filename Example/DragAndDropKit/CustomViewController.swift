@@ -53,7 +53,7 @@ class CustomViewController: UIViewController {
                 return UITargetedDragPreview(view: previewImageView, parameters: UIDragPreviewParameters(), target: target)
             }
             
-            self.view.drop.options = [.rawImage]
+            self.view.drop.supportSources = [.rawImage]
             self.view.drop.enabled().didReceivedDropSource { [weak self] dropSources in
                 for (_, item) in dropSources.enumerated() {
                     if let imageSource = item as? ImageDropSource {
