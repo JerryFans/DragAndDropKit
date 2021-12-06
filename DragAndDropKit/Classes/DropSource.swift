@@ -30,7 +30,8 @@ public class ImageDropSource: DropSource {
         super.init()
         typeIdentifier = kUTTypeImage as String
         if #available(iOS 11.0, *) {
-        self.writableTypeIdentifiersForItemProvider = UIImage.writableTypeIdentifiersForItemProvider
+            self.localObject = image
+            self.writableTypeIdentifiersForItemProvider = UIImage.writableTypeIdentifiersForItemProvider
         }
     }
     
@@ -71,6 +72,7 @@ public class TextDropSource: DropSource {
         super.init()
         typeIdentifier = kUTTypePlainText as String
         if #available(iOS 11.0, *) {
+            self.localObject = text
             self.writableTypeIdentifiersForItemProvider = NSString.writableTypeIdentifiersForItemProvider
         }
     }
@@ -101,7 +103,8 @@ public class VideoDropSource: DropSource {
         super.init()
         self.typeIdentifier = typeIdentifier
         if #available(iOS 11.0, *) {
-        self.writableTypeIdentifiersForItemProvider = [typeIdentifier]
+            self.localObject = asset
+            self.writableTypeIdentifiersForItemProvider = [typeIdentifier]
         }
     }
 }
@@ -110,6 +113,7 @@ public class DropSource: NSObject {
     
     public var writableTypeIdentifiersForItemProvider: [String] = []
     public var typeIdentifier: String = ""
+    public var localObject: Any?
     
     override init() {
         super.init()

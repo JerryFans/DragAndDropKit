@@ -74,6 +74,7 @@
 		B400AB790106B5BED5E15A2A7BB77121 /* JFAlertView+PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FB7EBDA7D8559DDE03EB064C431804 /* JFAlertView+PopupView.swift */; };
 		B40CEF60275CA5660029E46C /* UIView+Drop.Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40CEF5F275CA5660029E46C /* UIView+Drop.Define.swift */; };
 		B40CEF62275E54A30029E46C /* UIView+Drag.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40CEF61275E54A30029E46C /* UIView+Drag.swift */; };
+		B40CEF64275E5AC80029E46C /* UIView+Drag.Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40CEF63275E5AC80029E46C /* UIView+Drag.Define.swift */; };
 		B4CCA5D84C32D4733981D2C032A8701A /* JFPopup-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B7DBC4709701DBC49FA92A941F07687 /* JFPopup-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5E694D5E5F0F625980B1A41B7F81D1C /* DropSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF101BE3D7ABEB7B016766946DC067F /* DropSource.swift */; };
 		B6600A7FA07908F5CBC4E5D90331AA53 /* ConstraintRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0D480AAC4904305A1A0D4614B5D522 /* ConstraintRelation.swift */; };
@@ -250,6 +251,7 @@
 		B2D4BEC2483489EAD36F8A9C348B08C4 /* ConstraintMakerFinalizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerFinalizable.swift; path = Source/ConstraintMakerFinalizable.swift; sourceTree = "<group>"; };
 		B40CEF5F275CA5660029E46C /* UIView+Drop.Define.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Drop.Define.swift"; sourceTree = "<group>"; };
 		B40CEF61275E54A30029E46C /* UIView+Drag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Drag.swift"; sourceTree = "<group>"; };
+		B40CEF63275E5AC80029E46C /* UIView+Drag.Define.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Drag.Define.swift"; sourceTree = "<group>"; };
 		BB23A08EFE1AB61F8C28A262B23A233E /* DragAndDropKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DragAndDropKit-umbrella.h"; sourceTree = "<group>"; };
 		BCA575379EC10A24BA13DFFE9C5043B1 /* DragAndDropCollectionView+Drop.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DragAndDropCollectionView+Drop.swift"; sourceTree = "<group>"; };
 		BCF101BE3D7ABEB7B016766946DC067F /* DropSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DropSource.swift; path = DragAndDropKit/Classes/DropSource.swift; sourceTree = "<group>"; };
@@ -486,6 +488,7 @@
 				1140525A18436F803979266DCC259096 /* UIView+Drop.swift */,
 				B40CEF5F275CA5660029E46C /* UIView+Drop.Define.swift */,
 				B40CEF61275E54A30029E46C /* UIView+Drag.swift */,
+				B40CEF63275E5AC80029E46C /* UIView+Drag.Define.swift */,
 			);
 			name = UIView;
 			path = DragAndDropKit/Classes/UIView;
@@ -1034,6 +1037,7 @@
 				206E3B425FAFE26096477CB2815D1BCF /* DragAndDropCollectionView+Drag.swift in Sources */,
 				6C1277942624D419C76BBD103225D06A /* DragAndDropCollectionView+Drop.swift in Sources */,
 				C7E244E44C4ED43A8611B9737E83398A /* DragAndDropKit.swift in Sources */,
+				B40CEF64275E5AC80029E46C /* UIView+Drag.Define.swift in Sources */,
 				2DDAE0A026975F1B6DD6AD02A5538EBB /* DragAndDropKit-dummy.m in Sources */,
 				B40CEF60275CA5660029E46C /* UIView+Drop.Define.swift in Sources */,
 				9E3D64E88D48F8F72BAE36A61163045D /* DragAndDropTableView.swift in Sources */,

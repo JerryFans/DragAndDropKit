@@ -45,6 +45,24 @@ class CustomViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if #available(iOS 11.0, *) {
+            
+            self.imageView.drag.dropSource = ImageDropSource(image: self.imageView.image!)
+            self.imageView.drag.enabled().didPreviewForDragSession { [weak self] interaction, item, session in
+                guard let self = self else { return nil }
+                guard let image = item.localObject as? UIImage else { return nil }
+                
+                let frame: CGRect = self.imageView.frame
+                let previewImageView = UIImageView(image: image)
+                previewImageView.contentMode = .scaleAspectFill
+                previewImageView.clipsToBounds = true
+                previewImageView.frame = frame
+                
+                
+                let center = CGPoint(x: self.imageView.bounds.midX, y: self.imageView.bounds.midY)
+                let target = UIDragPreviewTarget(container: self.imageView, center: center)
+                return UITargetedDragPreview(view: previewImageView, parameters: UIDragPreviewParameters(), target: target)
+            }
+            
             self.view.drop.options = [.rawImage]
             self.view.drop.enabled().didReceivedDropSource { [weak self] dropSources in
                 for (_, item) in dropSources.enumerated() {
@@ -64,6 +82,21 @@ class CustomViewController: UIViewController {
                         ]
                     }
                 }
+            }.didUpdateDropSource { [weak self] interaction, session in
+                guard let self = self else {
+                    return UIDropProposal(operation: UIDropOperation.cancel)
+                }
+                let dropLocation = session.location(in: self.view)
+                
+                let operation: UIDropOperation
+                
+                if self.imageView.frame.contains(dropLocation) {
+                    operation = session.localDragSession == nil ? .copy : .move
+                } else {
+                    operation = .cancel
+                }
+                
+                return UIDropProposal(operation: operation)
             }
         } else {
             // Fallback on earlier versions
@@ -77,116 +110,4 @@ class CustomViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-}
-
-extension CustomViewController: UIDragInteractionDelegate {
-    
-    @available(iOS 11.0, *)
-    func dragInteraction(_ interaction: UIDragInteraction, itemsForBeginning session: UIDragSession) -> [UIDragItem] {
-        let feedBack = UISelectionFeedbackGenerator()
-        feedBack.selectionChanged()
-        guard let image = imageView.image else { return [] }
-        let provider = NSItemProvider(object: image)
-        let item = UIDragItem(itemProvider: provider)
-        item.localObject = image
-        
-        return [item]
-    }
-    
-    @available(iOS 11.0, *)
-    func dragInteraction(_ interaction: UIDragInteraction, previewForLifting item: UIDragItem, session: UIDragSession) -> UITargetedDragPreview? {
-        guard let image = item.localObject as? UIImage else { return nil }
-        
-        
-        let frame: CGRect = self.imageView.frame
-        let previewImageView = UIImageView(image: image)
-        previewImageView.contentMode = .scaleAspectFill
-        previewImageView.clipsToBounds = true
-        previewImageView.frame = frame
-        
-        
-        let center = CGPoint(x: imageView.bounds.midX, y: imageView.bounds.midY)
-        let target = UIDragPreviewTarget(container: imageView, center: center)
-        return UITargetedDragPreview(view: previewImageView, parameters: UIDragPreviewParameters(), target: target)
-    }
-}
-
-extension CustomViewController: UIDropInteractionDelegate {
-    // MARK: - UIDropInteractionDelegate
-    @available(iOS 11.0, *)
-    func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool {
-        if let item = session.items.first {
-            print("local objcet \(String(describing: item.itemProvider.registeredTypeIdentifiers))")
-        }
-        return session.hasItemsConforming(toTypeIdentifiers: [kUTTypeImage as String]) && session.items.count == 1
-    }
-    
-    @available(iOS 11.0, *)
-    func dropInteraction(_ interaction: UIDropInteraction, sessionDidEnter session: UIDropSession) {
-        if session.localDragSession == nil {
-            JFPopupView.popup.toast {
-                [.hit("发送到当前屏幕"),
-                 .withoutAnimation(true),
-                 .position(.top),
-                 .autoDismissDuration(.seconds(value: 3)),
-                 .bgColor(UIColor.jf.rgb(0x000000, alpha: 0.3))
-                ]
-            }
-        }
-        let dropLocation = session.location(in: view)
-        updateLayers(forDropLocation: dropLocation)
-    }
-    
-    @available(iOS 11.0, *)
-    func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal {
-        let dropLocation = session.location(in: view)
-        updateLayers(forDropLocation: dropLocation)
-        
-        let operation: UIDropOperation
-        
-        if imageView.frame.contains(dropLocation) {
-            operation = session.localDragSession == nil ? .copy : .move
-        } else {
-            operation = .cancel
-        }
-        
-        return UIDropProposal(operation: operation)
-    }
-    
-    @available(iOS 11.0, *)
-    func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
-        session.loadObjects(ofClass: UIImage.self) { imageItems in
-            let images = imageItems as! [UIImage]
-            guard let img = images.first else { return }
-            self.imageView.image = img
-        }
-        
-        let dropLocation = session.location(in: view)
-        updateLayers(forDropLocation: dropLocation)
-    }
-    
-    @available(iOS 11.0, *)
-    func dropInteraction(_ interaction: UIDropInteraction, sessionDidExit session: UIDropSession) {
-        let dropLocation = session.location(in: view)
-        updateLayers(forDropLocation: dropLocation)
-    }
-    
-    @available(iOS 11.0, *)
-    func dropInteraction(_ interaction: UIDropInteraction, sessionDidEnd session: UIDropSession) {
-        let _ = session.location(in: view)
-        imageView.layer.borderWidth = 0.0
-    }
-    
-    // MARK: - Helpers
-    @available(iOS 11.0, *)
-    func updateLayers(forDropLocation dropLocation: CGPoint) {
-        if imageView.frame.contains(dropLocation) {
-            imageView.layer.borderWidth = 2.0
-            UISelectionFeedbackGenerator().selectionChanged()
-        } else if view.frame.contains(dropLocation) {
-            imageView.layer.borderWidth = 0.0
-        } else {
-            imageView.layer.borderWidth = 0.0
-        }
-    }
 }
