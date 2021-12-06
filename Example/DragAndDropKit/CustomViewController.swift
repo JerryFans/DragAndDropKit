@@ -28,16 +28,6 @@ class CustomViewController: UIViewController {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.borderColor = UIColor.red.cgColor
-//        if #available(iOS 11.0, *) {
-//            imageView.dragAndDrop.enabledDrop()
-//        }
-//        imageView.dragAndDrop.
-//        if #available(iOS 11.0, *) {
-//            let dragInteraction = UIDragInteraction(delegate: self)
-//            imageView.addInteraction(dragInteraction)
-//            let dropInteraction = UIDropInteraction(delegate: self)
-//            view.addInteraction(dropInteraction)
-//        }
         
         return imageView
     }()
@@ -74,7 +64,7 @@ class CustomViewController: UIViewController {
             }.didEnterDropSession { interaction, session in
                 if session.localDragSession == nil {
                     JFPopupView.popup.toast {
-                        [.hit("发送到当前屏幕"),
+                        [.hit("请移入图片中替换"),
                          .withoutAnimation(true),
                          .position(.top),
                          .autoDismissDuration(.seconds(value: 3)),
