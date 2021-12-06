@@ -56,6 +56,25 @@ extension DropViewModel {
     }
     
     @available(iOS 11.0, *)
+    public static func canHandle(with options: [DropSourceOption], session: UIDropSession) -> Bool {
+        var canHandle = false
+        for option in options {
+            switch option {
+            case .rawImage:
+                canHandle = session.hasItemsConforming(toTypeIdentifiers: [kUTTypeImage as String])
+                break
+            case .rawVideo:
+                canHandle = session.hasItemsConforming(toTypeIdentifiers: [kUTTypeQuickTimeMovie as String]) || session.hasItemsConforming(toTypeIdentifiers: [kUTTypeMPEG4 as String])
+                break
+            case .text:
+                canHandle = session.hasItemsConforming(toTypeIdentifiers: [kUTTypePlainText as String]) || session.hasItemsConforming(toTypeIdentifiers: [kUTTypeURL as String])
+                break
+            }
+        }
+        return canHandle
+    }
+    
+    @available(iOS 11.0, *)
     public func dragItems(for indexPath: IndexPath) -> [UIDragItem] {
         let source = sources[indexPath.row]
         let itemProvider = NSItemProvider(object: source)

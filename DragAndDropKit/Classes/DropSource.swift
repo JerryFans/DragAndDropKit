@@ -12,7 +12,13 @@ import JFPopup
 import AVFoundation
 import Photos
 
-enum DropSourceError: Error {
+public enum DropSourceOption {
+    case rawImage
+    case rawVideo
+    case text
+}
+
+public enum DropSourceError: Error {
     case invalidTypeIdentifier
 }
 

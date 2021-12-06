@@ -12,10 +12,16 @@ import JFPopup
 import Photos
 import DragAndDropKit
 
+class CustomImgView: UIImageView {
+    deinit {
+        print("CustomImgView dealloc")
+    }
+}
+
 class CustomViewController: UIViewController {
     
-    lazy var imageView: UIImageView = {
-        let imageView = UIImageView()
+    lazy var imageView: CustomImgView = {
+        let imageView = CustomImgView()
         imageView.frame = CGRect(x: 210, y: 100, width: 150, height: 150)
         imageView.image = UIImage(named: "template-1")
         imageView.isUserInteractionEnabled = true
@@ -39,12 +45,23 @@ class CustomViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if #available(iOS 11.0, *) {
-            self.view.dragAndDrop.enabledDrop()
-            self.view.dragAndDrop.didReceivedDropSource = { [weak self] dropSources in
+            self.view.drop.options = [.rawImage]
+            self.view.drop.enabled().didReceivedDropSource { [weak self] dropSources in
                 for (_, item) in dropSources.enumerated() {
                     if let imageSource = item as? ImageDropSource {
                         self?.imageView.image = imageSource.image
                         break
+                    }
+                }
+            }.didEnterDropSession { interaction, session in
+                if session.localDragSession == nil {
+                    JFPopupView.popup.toast {
+                        [.hit("发送到当前屏幕"),
+                         .withoutAnimation(true),
+                         .position(.top),
+                         .autoDismissDuration(.seconds(value: 3)),
+                         .bgColor(UIColor.jf.rgb(0x000000, alpha: 0.3))
+                        ]
                     }
                 }
             }
