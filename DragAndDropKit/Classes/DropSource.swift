@@ -22,6 +22,41 @@ public enum DropSourceError: Error {
     case invalidTypeIdentifier
 }
 
+public class NetworkImageDropSource: DropSource, URLSessionTaskDelegate {
+    public var imageUrl: String
+    
+    public init(imageUrl: String) {
+        self.imageUrl = imageUrl
+        super.init()
+        typeIdentifier = kUTTypeImage as String
+        if #available(iOS 11.0, *) {
+            self.writableTypeIdentifiersForItemProvider = UIImage.writableTypeIdentifiersForItemProvider
+            
+        }
+    }
+    
+    
+    public override func loadData(withTypeIdentifier typeIdentifier: String, forItemProviderCompletionHandler completionHandler: @escaping (Data?, Error?) -> Void) -> Progress? {
+        let progress = Progress(totalUnitCount: 100)
+        let task = URLSession.shared.downloadTask(with: URL(string: imageUrl)!) { url, rsp, error in
+            if let url = url, let image = UIImage(contentsOfFile: url.path) {
+                if let data = UIImagePNGRepresentation(image) {
+                    completionHandler(data, nil)
+                } else {
+                    completionHandler(nil, DropSourceError.invalidTypeIdentifier)
+                }
+            }
+        }
+        task.resume()
+        // I'm not returning any progress
+        if #available(iOS 11.0, *) {
+            return task.progress
+        } else {
+            return progress
+        }
+    }
+}
+
 public class ImageDropSource: DropSource {
     public var image: UIImage
     

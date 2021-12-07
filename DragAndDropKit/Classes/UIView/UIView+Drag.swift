@@ -12,6 +12,7 @@ extension Drag where Base: UIView {
     
     @available(iOS 11.0, *)
     @discardableResult public func enabled() -> Drag {
+        base.isUserInteractionEnabled = true
         let dragInteraction = UIDragInteraction(delegate: base)
         base.addInteraction(dragInteraction)
         return self

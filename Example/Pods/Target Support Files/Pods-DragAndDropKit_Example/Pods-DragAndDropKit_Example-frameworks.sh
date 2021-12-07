@@ -179,12 +179,14 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/DragAndDropKit/DragAndDropKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/JFPopup/JFPopup.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/JRBaseKit/JRBaseKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/DragAndDropKit/DragAndDropKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/JFPopup/JFPopup.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/JRBaseKit/JRBaseKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then

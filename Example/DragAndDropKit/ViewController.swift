@@ -38,6 +38,8 @@ class ViewController: UIViewController {
         self.title = "Drag And Drop 示例"
         self.view.addSubview(self.btn1)
         self.view.addSubview(self.btn2)
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     

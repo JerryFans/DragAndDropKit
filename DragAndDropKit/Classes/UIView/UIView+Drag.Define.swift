@@ -111,7 +111,7 @@ extension Drag where Base: UIView {
         }
         
         get {
-            if let rs = objc_getAssociatedObject(base, &associatedObjectDropSource) as? ImageDropSource {
+            if let rs = objc_getAssociatedObject(base, &associatedObjectDropSource) as? DropSource {
                 return rs
             }
             return nil
