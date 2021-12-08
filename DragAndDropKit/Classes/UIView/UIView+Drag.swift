@@ -91,7 +91,32 @@ extension UIView: UIDragInteractionDelegate {
     
     @available(iOS 11.0, *)
     public func dragInteraction(_ interaction: UIDragInteraction, previewForLifting item: UIDragItem, session: UIDragSession) -> UITargetedDragPreview? {
-        return self.drag._didPreviewForDragSession?(interaction,item,session)
+        if self.drag._didPreviewForDragSession != nil {
+            return self.drag._didPreviewForDragSession?(interaction,item,session)
+        }
+        let previewImageView = UIImageView(frame: self.frame)
+        if let img = self.convertToImage() {
+            previewImageView.image = img
+        } else {
+            previewImageView.backgroundColor = .red
+        }
+        previewImageView.contentMode = .scaleAspectFill
+        previewImageView.clipsToBounds = true
+
+        let center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
+        let target = UIDragPreviewTarget(container: self, center: center)
+        return UITargetedDragPreview(view: previewImageView, parameters: UIDragPreviewParameters(), target: target)
+    }
+    
+    private func convertToImage() -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, UIScreen.main.scale)
+        if let context = UIGraphicsGetCurrentContext() {
+            self.layer.render(in: context)
+            let image = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            return image
+        }
+        return nil
     }
     
     @available(iOS 11.0, *)

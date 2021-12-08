@@ -44,15 +44,14 @@ class CustomViewController: UIViewController {
         return imageView
     }()
     
-    var networkVideoImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.frame = CGRect(x: 50, y: 260, width: 150, height: 150)
-        imageView.isUserInteractionEnabled = true
-        imageView.backgroundColor = .red
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.layer.borderColor = UIColor.red.cgColor
-        return imageView
+    var networkVideoLabel: UILabel = {
+        let label = UILabel()
+        label.frame = CGRect(x: 50, y: 260, width: 150, height: 150)
+        label.text = "Network Video"
+        label.textAlignment = .center
+        label.textColor = .white
+        label.backgroundColor = .red
+        return label
     }()
     
     override func viewDidLoad() {
@@ -80,37 +79,10 @@ class CustomViewController: UIViewController {
             
             self.networkImageView.drag.dropSource = NetworkImageDropSource(imageUrl: "http://image.jerryfans.com/sample.jpg")
             self.networkImageView.drag.enabled()
-            .didPreviewForDragSession { [weak self] interaction, item, session in
-                guard let self = self else { return nil }
-                guard let image = self.networkImageView.image else { return nil }
-//
-                let frame: CGRect = self.networkImageView.frame
-                let previewImageView = UIImageView(image: image)
-                previewImageView.contentMode = .scaleAspectFill
-                previewImageView.clipsToBounds = true
-                previewImageView.frame = frame
-
-                let center = CGPoint(x: self.networkImageView.bounds.midX, y: self.networkImageView.bounds.midY)
-                let target = UIDragPreviewTarget(container: self.networkImageView, center: center)
-                return UITargetedDragPreview(view: previewImageView, parameters: UIDragPreviewParameters(), target: target)
-            }
             
-            self.networkVideoImageView.drag.dropSource = NetworkVideoDropSource(videoUrl: "http://image.jerryfans.com/test_1.mp4")
-            self.networkVideoImageView.drag.enabled()
-            .didPreviewForDragSession { [weak self] interaction, item, session in
-                guard let self = self else { return nil }
-//                guard let image = self.networkImageView.image else { return nil }
-//
-                let frame: CGRect = self.networkVideoImageView.frame
-                let previewImageView = UIImageView()
-                previewImageView.contentMode = .scaleAspectFill
-                previewImageView.clipsToBounds = true
-                previewImageView.frame = frame
-
-                let center = CGPoint(x: self.networkVideoImageView.bounds.midX, y: self.networkImageView.bounds.midY)
-                let target = UIDragPreviewTarget(container: self.networkVideoImageView, center: center)
-                return UITargetedDragPreview(view: previewImageView, parameters: UIDragPreviewParameters(), target: target)
-            }
+            
+            self.networkVideoLabel.drag.dropSource = NetworkVideoDropSource(videoUrl: "http://image.jerryfans.com/final_memory.mp4")
+            self.networkVideoLabel.drag.enabled()
             
             self.view.drop.supportSources = [.rawImage]
             self.view.drop.enabled().didReceivedDropSource { [weak self] dropSources in
@@ -153,7 +125,7 @@ class CustomViewController: UIViewController {
         self.view.backgroundColor = .white
         self.view.addSubview(self.imageView)
         self.view.addSubview(self.networkImageView)
-        self.view.addSubview(self.networkVideoImageView)
+        self.view.addSubview(self.networkVideoLabel)
     }
     
     override func didReceiveMemoryWarning() {
