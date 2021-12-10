@@ -13,6 +13,7 @@ import AVFoundation
 import Photos
 
 public enum DropSourceOption {
+    case unknown
     case rawImage
     case rawVideo
     case text
@@ -29,6 +30,7 @@ public class NetworkImageDropSource: DropSource {
         self.imageUrl = imageUrl
         super.init()
         typeIdentifier = kUTTypeImage as String
+        self.type = .rawImage
         if #available(iOS 11.0, *) {
             self.writableTypeIdentifiersForItemProvider = UIImage.writableTypeIdentifiersForItemProvider
             
@@ -39,10 +41,11 @@ public class NetworkImageDropSource: DropSource {
     public override func loadData(withTypeIdentifier typeIdentifier: String, forItemProviderCompletionHandler completionHandler: @escaping (Data?, Error?) -> Void) -> Progress? {
         let progress = Progress(totalUnitCount: 100)
         let task = URLSession.shared.downloadTask(with: URL(string: imageUrl)!) { url, rsp, error in
-            if let url = url, let image = UIImage(contentsOfFile: url.path) {
-                if let data = UIImagePNGRepresentation(image) {
-                    completionHandler(data, nil)
-                } else {
+            if let url = url {
+                do {
+                    let d = try Data(contentsOf: url)
+                    completionHandler(d, nil)
+                } catch {
                     completionHandler(nil, DropSourceError.invalidTypeIdentifier)
                 }
             }
@@ -64,6 +67,7 @@ public class ImageDropSource: DropSource {
         self.image = image
         super.init()
         typeIdentifier = kUTTypeImage as String
+        self.type = .rawImage
         if #available(iOS 11.0, *) {
             self.localObject = image
             self.writableTypeIdentifiersForItemProvider = UIImage.writableTypeIdentifiersForItemProvider
@@ -106,6 +110,7 @@ public class TextDropSource: DropSource {
         self.text = text
         super.init()
         typeIdentifier = kUTTypePlainText as String
+        self.type = .text
         if #available(iOS 11.0, *) {
             self.localObject = text
             self.writableTypeIdentifiersForItemProvider = NSString.writableTypeIdentifiersForItemProvider
@@ -120,6 +125,7 @@ public class NetworkVideoDropSource: DropSource {
         self.videoUrl = videoUrl
         super.init()
         typeIdentifier = kUTTypeMPEG4 as String
+        self.type = .rawVideo
         if #available(iOS 11.0, *) {
             self.writableTypeIdentifiersForItemProvider = [typeIdentifier]
         }
@@ -172,6 +178,7 @@ public class VideoDropSource: DropSource {
         self.asset = asset
         super.init()
         self.typeIdentifier = typeIdentifier
+        self.type = .rawVideo
         if #available(iOS 11.0, *) {
             self.localObject = asset
             self.writableTypeIdentifiersForItemProvider = [typeIdentifier]
@@ -182,6 +189,7 @@ public class VideoDropSource: DropSource {
 public class DropSource: NSObject {
     
     public var writableTypeIdentifiersForItemProvider: [String] = []
+    public var type: DropSourceOption = .unknown
     public var typeIdentifier: String = ""
     public var localObject: Any?
     
@@ -230,12 +238,6 @@ extension DropSource: NSItemProviderReading {
             let tmpPath = tmpDir.appending(tmpFile)
             if FileManager.default.createFile(atPath: tmpPath, contents: data, attributes: nil) {
                 let asset = AVURLAsset(url: URL(fileURLWithPath: tmpPath))
-                JFPopupView.popup.alert {
-                    [
-                        .title("导入成功"),
-                        .subTitle("路径是:\(tmpPath)")
-                    ]
-                }
                 return VideoDropSource(asset: asset, typeIdentifier: typeIdentifier) as! Self
             } else {
                 throw DropSourceError.invalidTypeIdentifier
@@ -246,12 +248,6 @@ extension DropSource: NSItemProviderReading {
             let tmpPath = tmpDir.appending(tmpFile)
             if FileManager.default.createFile(atPath: tmpPath, contents: data, attributes: nil) {
                 let asset = AVURLAsset(url: URL(fileURLWithPath: tmpPath))
-                JFPopupView.popup.alert {
-                    [
-                        .title("导入成功"),
-                        .subTitle("路径是:\(tmpPath)")
-                    ]
-                }
                 return VideoDropSource(asset: asset, typeIdentifier: typeIdentifier) as! Self
             } else {
                 throw DropSourceError.invalidTypeIdentifier

@@ -69,6 +69,8 @@ extension DropViewModel {
             case .text:
                 canHandle = session.hasItemsConforming(toTypeIdentifiers: [kUTTypePlainText as String]) || session.hasItemsConforming(toTypeIdentifiers: [kUTTypeURL as String])
                 break
+            case .unknown:
+                break
             }
         }
         return canHandle

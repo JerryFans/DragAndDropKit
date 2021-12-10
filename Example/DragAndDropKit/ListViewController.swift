@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import DragAndDropKit
+import JFPopup
 
 class DropItemCell: UICollectionViewCell {
     
@@ -70,23 +71,32 @@ class DropItemCell: UICollectionViewCell {
 
 class ListViewController: UIViewController {
     
-    lazy var collectionView: DragAndDropCollectionView = {
+    lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 15
         layout.minimumInteritemSpacing = 15
         var width: CGFloat =  (CGSize.jf.screenWidth() - 30 - (15 * 2)) / 3
         layout.itemSize = CGSize(width: width, height: width)
         layout.sectionInset = UIEdgeInsets.init(top: 0, left: 15, bottom: 0, right: 15)
-        let c = DragAndDropCollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        var c = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         c.register(DropItemCell.self, forCellWithReuseIdentifier: DropItemCell.identify())
         c.delegate = self
         c.dataSource = self
         c.backgroundColor = .white
-        c.enabledDrag()
-        c.enabledDrop()
+        if #available(iOS 11.0, *) {
+            c.drag.enabled().collectionViewWillBeginDragSession { collectionView, session in
+                JFPopup.toast(hit: "collection view will begin drag")
+            }.collectionViewDidEndDragSession { collectionView, session in
+                JFPopup.toast(hit: "collection view did end drag")
+            }
+            
+            c.drop.supportSources = [.rawImage]
+            c.drop.enabled()
+        }
+        
         return c
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white

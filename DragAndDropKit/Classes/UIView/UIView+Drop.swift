@@ -97,7 +97,10 @@ extension UIView: UIDropInteractionDelegate {
         
         session.loadObjects(ofClass: DropSource.self) { dropSources in
             if let dropSources = dropSources as? [DropSource] {
-                self.drop._didReceivedDropSource?(dropSources)
+                let sources = dropSources.filter {
+                    return self.drop.supportSources.contains($0.type)
+                }
+                self.drop._didReceivedDropSource?(sources)
             }
         }
         

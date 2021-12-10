@@ -19,8 +19,8 @@ class ViewController: UIViewController {
         let btn = UIButton(type: .custom)
         btn.addTarget(self, action: #selector(click1), for: .touchUpInside)
         btn.backgroundColor = UIColor.red
-        btn.setTitle("Only View", for: .normal)
-        btn.frame = CGRect(x: 15, y: 100, width: 100, height: 50)
+        btn.setTitle("UIView Example", for: .normal)
+        btn.frame = CGRect(x: 15, y: 100, width: 200, height: 50)
         return btn
     }()
     
@@ -28,14 +28,14 @@ class ViewController: UIViewController {
         let btn = UIButton(type: .custom)
         btn.addTarget(self, action: #selector(click2), for: .touchUpInside)
         btn.backgroundColor = UIColor.red
-        btn.setTitle("List View", for: .normal)
-        btn.frame = CGRect(x: 15, y: 165, width: 100, height: 50)
+        btn.setTitle("UICollectView Example", for: .normal)
+        btn.frame = CGRect(x: 15, y: 165, width: 200, height: 50)
         return btn
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Drag And Drop 示例"
+        self.title = "Drag And Drop Example"
         self.view.addSubview(self.btn1)
         self.view.addSubview(self.btn2)
         
