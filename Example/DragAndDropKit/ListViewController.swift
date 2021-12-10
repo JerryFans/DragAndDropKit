@@ -71,6 +71,24 @@ class DropItemCell: UICollectionViewCell {
 
 class ListViewController: UIViewController {
     
+    var dragAndDropVM: DropViewModel = {
+        var vm = DropViewModel()
+        let s = [
+            ImageDropSource(image: UIImage(named: "template-1")!),
+            ImageDropSource(image: UIImage(named: "template-2")!),
+            ImageDropSource(image: UIImage(named: "template-3")!),
+            ImageDropSource(image: UIImage(named: "template-4")!),
+            ImageDropSource(image: UIImage(named: "template-5")!),
+            ImageDropSource(image: UIImage(named: "template-6")!),
+            ImageDropSource(image: UIImage(named: "template-7")!),
+            ImageDropSource(image: UIImage(named: "template-8")!),
+            ImageDropSource(image: UIImage(named: "template-9")!),
+            ImageDropSource(image: UIImage(named: "template-10")!)
+        ]
+        vm.sources.append(contentsOf: s)
+        return vm
+    }()
+    
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 15
@@ -84,14 +102,32 @@ class ListViewController: UIViewController {
         c.dataSource = self
         c.backgroundColor = .white
         if #available(iOS 11.0, *) {
-            c.drag.enabled().collectionViewWillBeginDragSession { collectionView, session in
+            c.drag.enabled().collectionViewDidItemsForBeginning { [weak self] collectionView, session, indexPath in
+                return self?.dragAndDropVM.dragItems(for: indexPath) ?? []
+            }.collectionViewWillBeginDragSession { collectionView, session in
                 JFPopup.toast(hit: "collection view will begin drag")
             }.collectionViewDidEndDragSession { collectionView, session in
                 JFPopup.toast(hit: "collection view did end drag")
             }
             
-            c.drop.supportSources = [.rawImage]
-            c.drop.enabled()
+            c.drop.supportSources = [.rawImage,.rawVideo,.text]
+            c.drop.enabled().collectionViewDidReceivedDropSource { [weak self] collectionView, coordinator, dropSources in
+                let destinationIndexPath: IndexPath
+                
+                if let indexPath = coordinator.destinationIndexPath {
+                    destinationIndexPath = indexPath
+                } else {
+                    let item = collectionView.numberOfItems(inSection: 0)
+                    destinationIndexPath = IndexPath(item: item, section: 0)
+                }
+                var indexPaths = [IndexPath]()
+                for (index, item) in dropSources.enumerated() {
+                    let indexPath = IndexPath(item: destinationIndexPath.item + index, section: destinationIndexPath.section)
+                    self?.dragAndDropVM.addItem(item, at: indexPath.item)
+                    indexPaths.append(indexPath)
+                }
+                self?.collectionView.insertItems(at: indexPaths)
+            }
         }
         
         return c
@@ -108,7 +144,7 @@ class ListViewController: UIViewController {
 extension ListViewController: UICollectionViewDelegate,UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let source = self.collectionView.dragAndDropVM.sources[indexPath.item]
+        let source = dragAndDropVM.sources[indexPath.item]
         if let videoSource = source as? VideoDropSource {
             let vc = VideoViewController()
             vc.asset = videoSource.asset
@@ -117,12 +153,12 @@ extension ListViewController: UICollectionViewDelegate,UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.collectionView.dragAndDropVM.sources.count
+        return dragAndDropVM.sources.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DropItemCell.identify(), for: indexPath) as! DropItemCell
-        cell.source =  self.collectionView.dragAndDropVM.sources[indexPath.item]
+        cell.source =  dragAndDropVM.sources[indexPath.item]
         return cell
     }
     

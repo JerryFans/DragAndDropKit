@@ -11,6 +11,10 @@ import Foundation
 private var associatedObjectTableViewDidAllowsMoveOperationSession: UInt8 = 0
 private var associatedObjectTableViewWillBeginDragSession: UInt8 = 0
 private var associatedObjectTableViewDidEndDragSession: UInt8 = 0
+private var associatedObjectTableViewDidItemsForBeginning: UInt8 = 0
+
+@available(iOS 11.0, *)
+public typealias TableViewDidItemsForBeginning = (_ tableView: UITableView,_ session: UIDragSession, _ indexPath: IndexPath) -> ([UIDragItem])
 
 @available(iOS 11.0, *)
 public typealias TableViewDidAllowsMoveOperationSession = (_ tableView: UITableView,_ session: UIDragSession) -> (Bool)
@@ -22,6 +26,16 @@ public typealias TableViewWillBeginDragSession = (_ tableView: UITableView,_ ses
 public typealias TableViewDidEndDragSession = (_ tableView: UITableView,_ session: UIDragSession) -> ()
 
 extension Drag where Base: UITableView {
+    
+    @available(iOS 11.0, *)
+    var _tableViewDidItemsForBeginning: TableViewDidItemsForBeginning? {
+        set {
+            objc_setAssociatedObject(base, &associatedObjectTableViewDidItemsForBeginning, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
+        }
+        get {
+            return objc_getAssociatedObject(base, &associatedObjectTableViewDidItemsForBeginning) as? TableViewDidItemsForBeginning
+        }
+    }
     
     @available(iOS 11.0, *)
     var _tableViewDidEndDragSession: TableViewDidEndDragSession? {

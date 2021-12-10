@@ -40,8 +40,19 @@ extension Drop where Base: UICollectionView {
     }
     
     @available(iOS 11.0, *)
+    @discardableResult public func collectionViewDidReceivedDropSource(collectionViewDidReceivedDropSource: @escaping CollectionViewDidReceivedDropSource) -> Drop {
+        var muteSelf = self
+        muteSelf._collectionViewDidReceivedDropSource = collectionViewDidReceivedDropSource
+        return muteSelf
+    }
+    
+    @available(iOS 11.0, *)
     @discardableResult public func enabled() -> Drop {
-        base.dropDelegate = base
+        if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad {
+            base.dropDelegate = base
+        } else if #available(iOS 15.0, *) {
+            base.dropDelegate = base
+        }
         return self
     }
     
@@ -54,7 +65,7 @@ extension UICollectionView: UICollectionViewDropDelegate {
         if self.drop.supportSources.count > 0 {
             return DropViewModel.canHandle(with: self.drop.supportSources, session: session)
         }
-        return self.dragAndDropVM.canHandle(session)
+        return DropViewModel.canHandle(session)
     }
     
     @available(iOS 11.0, *)
@@ -92,27 +103,13 @@ extension UICollectionView: UICollectionViewDropDelegate {
     @available(iOS 11.0, *)
     public func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
         
-        let destinationIndexPath: IndexPath
-        
-        if let indexPath = coordinator.destinationIndexPath {
-            destinationIndexPath = indexPath
-        } else {
-            let item = collectionView.numberOfItems(inSection: 0)
-            destinationIndexPath = IndexPath(row: item, section: 0)
-        }
-        
         coordinator.session.loadObjects(ofClass: DropSource.self) { dropSources in
-            let dropSources = dropSources as! [DropSource]
-            var indexPaths = [IndexPath]()
-            for (index, item) in dropSources.enumerated() {
-                if self.drop.supportSources.contains(item.type) == false {
-                    continue
+            if let dropSources = dropSources as? [DropSource] {
+                let sources = dropSources.filter {
+                    return self.drop.supportSources.contains($0.type)
                 }
-                let indexPath = IndexPath(item: destinationIndexPath.item + index, section: destinationIndexPath.section)
-                self.dragAndDropVM.addItem(item, at: indexPath.item)
-                indexPaths.append(indexPath)
+                self.drop._collectionViewDidReceivedDropSource?(collectionView,coordinator,sources)
             }
-            collectionView.insertItems(at: indexPaths)
         }
     }
     

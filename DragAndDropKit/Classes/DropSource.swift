@@ -23,7 +23,7 @@ public enum DropSourceError: Error {
     case invalidTypeIdentifier
 }
 
-public class NetworkImageDropSource: DropSource {
+open class NetworkImageDropSource: DropSource {
     public var imageUrl: String
     
     public init(imageUrl: String) {
@@ -60,7 +60,7 @@ public class NetworkImageDropSource: DropSource {
     }
 }
 
-public class ImageDropSource: DropSource {
+open class ImageDropSource: DropSource {
     public var image: UIImage
     
     public init(image: UIImage) {
@@ -97,7 +97,7 @@ public class ImageDropSource: DropSource {
     }
 }
 
-public class TextDropSource: DropSource {
+open class TextDropSource: DropSource {
     public var text: String
     
     public override func loadData(withTypeIdentifier typeIdentifier: String, forItemProviderCompletionHandler completionHandler: @escaping (Data?, Error?) -> Void) -> Progress? {
@@ -118,7 +118,7 @@ public class TextDropSource: DropSource {
     }
 }
 
-public class NetworkVideoDropSource: DropSource {
+open class NetworkVideoDropSource: DropSource {
     public var videoUrl: String
     
     public init(videoUrl: String) {
@@ -186,7 +186,7 @@ public class VideoDropSource: DropSource {
     }
 }
 
-public class DropSource: NSObject {
+open class DropSource: NSObject {
     
     public var writableTypeIdentifiersForItemProvider: [String] = []
     public var type: DropSourceOption = .unknown

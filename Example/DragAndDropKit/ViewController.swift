@@ -16,20 +16,32 @@ import DragAndDropKit
 class ViewController: UIViewController {
     
     let btn1: UIButton = {
-        let btn = UIButton(type: .custom)
+        var btn = UIButton(type: .custom)
         btn.addTarget(self, action: #selector(click1), for: .touchUpInside)
         btn.backgroundColor = UIColor.red
         btn.setTitle("UIView Example", for: .normal)
-        btn.frame = CGRect(x: 15, y: 100, width: 200, height: 50)
+        btn.frame = CGRect(x: 15, y: 100, width: 290, height: 50)
+        btn.jf.width = CGSize.jf.screenWidth() - 30
         return btn
     }()
     
     let btn2: UIButton = {
-        let btn = UIButton(type: .custom)
+        var btn = UIButton(type: .custom)
         btn.addTarget(self, action: #selector(click2), for: .touchUpInside)
         btn.backgroundColor = UIColor.red
-        btn.setTitle("UICollectView Example", for: .normal)
-        btn.frame = CGRect(x: 15, y: 165, width: 200, height: 50)
+        btn.setTitle("UICollectView(Use DropVM) Example", for: .normal)
+        btn.frame = CGRect(x: 15, y: 165, width: 290, height: 50)
+        btn.jf.width = CGSize.jf.screenWidth() - 30
+        return btn
+    }()
+    
+    let btn3: UIButton = {
+        var btn = UIButton(type: .custom)
+        btn.addTarget(self, action: #selector(click3), for: .touchUpInside)
+        btn.backgroundColor = UIColor.red
+        btn.setTitle("UITableView(Custom Model) Example", for: .normal)
+        btn.frame = CGRect(x: 15, y: 230, width: 290, height: 50)
+        btn.jf.width = CGSize.jf.screenWidth() - 30
         return btn
     }()
     
@@ -38,9 +50,7 @@ class ViewController: UIViewController {
         self.title = "Drag And Drop Example"
         self.view.addSubview(self.btn1)
         self.view.addSubview(self.btn2)
-        
-        
-        // Do any additional setup after loading the view, typically from a nib.
+        self.view.addSubview(self.btn3)
     }
     
     @objc func click1() {
@@ -49,6 +59,10 @@ class ViewController: UIViewController {
     
     @objc func click2() {
         self.navigationController?.pushViewController(ListViewController(), animated: true)
+    }
+    
+    @objc func click3() {
+        self.navigationController?.pushViewController(TableViewController(), animated: true)
     }
     
     override func didReceiveMemoryWarning() {

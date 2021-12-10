@@ -14,6 +14,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		B40CEF6E276306C00029E46C /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40CEF6D276306C00029E46C /* TableViewController.swift */; };
 		B4EE597F272E9C6800EFD761 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE597E272E9C6800EFD761 /* CustomViewController.swift */; };
 		B4EE5981272E9F9B00EFD761 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE5980272E9F9B00EFD761 /* ListViewController.swift */; };
 		B4EE5987272ED47C00EFD761 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE5986272ED47C00EFD761 /* VideoViewController.swift */; };
@@ -48,6 +49,7 @@
 		7C86B17F4ABB0A23F043616F /* Pods-DragAndDropKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DragAndDropKit_Tests.debug.xcconfig"; path = "Target Support Files/Pods-DragAndDropKit_Tests/Pods-DragAndDropKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		927B9A548D2539266F2D2684 /* Pods-DragAndDropKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DragAndDropKit_Tests.release.xcconfig"; path = "Target Support Files/Pods-DragAndDropKit_Tests/Pods-DragAndDropKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		AB90A735895DAC116A96070E /* DragAndDropKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = DragAndDropKit.podspec; path = ../DragAndDropKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B40CEF6D276306C00029E46C /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		B4EE597E272E9C6800EFD761 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		B4EE5980272E9F9B00EFD761 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		B4EE5986272ED47C00EFD761 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				B4EE597E272E9C6800EFD761 /* CustomViewController.swift */,
 				B4EE5980272E9F9B00EFD761 /* ListViewController.swift */,
+				B40CEF6D276306C00029E46C /* TableViewController.swift */,
 				B4EE5986272ED47C00EFD761 /* VideoViewController.swift */,
 				607FACD41AFB9204008FA782 /* Info.plist */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -351,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				B40CEF6E276306C00029E46C /* TableViewController.swift in Sources */,
 				B4EE597F272E9C6800EFD761 /* CustomViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				B4EE5987272ED47C00EFD761 /* VideoViewController.swift in Sources */,
@@ -441,7 +445,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -487,7 +491,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

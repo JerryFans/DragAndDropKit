@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'DragAndDropKit'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of DragAndDropKit.'
+  s.summary          = 'A Swift Module Help You Drag Or Drop Source Between Different App In A Easy Way'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,17 +18,18 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+                       *DragAndDropKit is a Swift Module  Help You Drag Or Drop Source (Like Image,Video,Text) In A Easy Way.
+                       *Use iOS DragAndDrop Api, support iPhone In iOS 15 +, iPad In iOS 11 +
                        DESC
 
-  s.homepage         = 'https://github.com/fanjiaorng919/DragAndDropKit'
+  s.homepage         = 'https://github.com/JerryFans/DragAndDropKit'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'fanjiaorng919' => 'fanjiarong_haohao@163.com' }
-  s.source           = { :git => 'https://github.com/fanjiaorng919/DragAndDropKit.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/JerryFans/DragAndDropKit.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '10.0'
 
   s.source_files = 'DragAndDropKit/Classes/**/*'
   

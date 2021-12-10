@@ -54,8 +54,13 @@ extension Drop where Base: UIView {
     
     @available(iOS 11.0, *)
     @discardableResult public func enabled() -> Drop {
-        let dropInteraction = UIDropInteraction(delegate: base)
-        base.addInteraction(dropInteraction)
+        if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad {
+            let dropInteraction = UIDropInteraction(delegate: base)
+            base.addInteraction(dropInteraction)
+        } else if #available(iOS 15.0, *) {
+            let dropInteraction = UIDropInteraction(delegate: base)
+            base.addInteraction(dropInteraction)
+        }
         return self
     }
 }

@@ -4,13 +4,13 @@ PODS:
   - JFPopup (1.4.0):
     - JRBaseKit (~> 0.9.0)
   - JRBaseKit (0.9.0)
-  - Kingfisher (4.10.1)
+  - Kingfisher (6.3.1)
   - SnapKit (4.2.0)
 
 DEPENDENCIES:
   - DragAndDropKit (from `../`)
   - JFPopup (~> 1.4.0)
-  - Kingfisher
+  - Kingfisher (~> 6.3.1)
   - SnapKit
 
 SPEC REPOS:
@@ -28,9 +28,9 @@ SPEC CHECKSUMS:
   DragAndDropKit: 3681ba16a9e0cf7387e97852366f2c3be6c27ce1
   JFPopup: ec02a2c1574d90cb54d182aec9213034735da70e
   JRBaseKit: f4a95149f6b68417348e63065d384f22501cf2ce
-  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
-PODFILE CHECKSUM: d29e2ca3f09c546dea5524e7183754212919ad8f
+PODFILE CHECKSUM: 1b53fa76c843f61d4b82fd97cfadda0ad38a1375
 
 COCOAPODS: 1.11.2

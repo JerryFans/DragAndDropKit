@@ -15,18 +15,7 @@ public struct DropViewModel {
         
     }
     
-    public var sources: [DropSource] = [
-        ImageDropSource(image: UIImage(named: "template-1")!),
-        ImageDropSource(image: UIImage(named: "template-2")!),
-        ImageDropSource(image: UIImage(named: "template-3")!),
-        ImageDropSource(image: UIImage(named: "template-4")!),
-        ImageDropSource(image: UIImage(named: "template-5")!),
-        ImageDropSource(image: UIImage(named: "template-6")!),
-        ImageDropSource(image: UIImage(named: "template-7")!),
-        ImageDropSource(image: UIImage(named: "template-8")!),
-        ImageDropSource(image: UIImage(named: "template-9")!),
-        ImageDropSource(image: UIImage(named: "template-10")!),
-    ]
+    public var sources: [DropSource] = []
     
     public mutating func moveItem(at sourceIndex: Int, to destinationIndex: Int) {
         guard sourceIndex != destinationIndex else { return }
@@ -59,6 +48,9 @@ extension DropViewModel {
     public static func canHandle(with supportSources: [DropSourceOption], session: UIDropSession) -> Bool {
         var canHandle = false
         for option in supportSources {
+            if canHandle {
+                break
+            }
             switch option {
             case .rawImage:
                 canHandle = session.hasItemsConforming(toTypeIdentifiers: [kUTTypeImage as String])

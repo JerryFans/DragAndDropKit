@@ -11,6 +11,10 @@ import Foundation
 private var associatedObjectCollectionViewDidAllowsMoveOperationSession: UInt8 = 0
 private var associatedObjectCollectionViewWillBeginDragSession: UInt8 = 0
 private var associatedObjectCollectionViewDidEndDragSession: UInt8 = 0
+private var associatedObjectCollectionViewDidItemsForBeginning: UInt8 = 0
+
+@available(iOS 11.0, *)
+public typealias CollectionViewDidItemsForBeginning = (_ collectionView: UICollectionView,_ session: UIDragSession, _ indexPath: IndexPath) -> ([UIDragItem])
 
 @available(iOS 11.0, *)
 public typealias CollectionViewDidAllowsMoveOperationSession = (_ collectionView: UICollectionView,_ session: UIDragSession) -> (Bool)
@@ -22,6 +26,16 @@ public typealias CollectionViewWillBeginDragSession = (_ collectionView: UIColle
 public typealias CollectionViewDidEndDragSession = (_ collectionView: UICollectionView,_ session: UIDragSession) -> ()
 
 extension Drag where Base: UICollectionView {
+    
+    @available(iOS 11.0, *)
+    var _collectionViewDidItemsForBeginning: CollectionViewDidItemsForBeginning? {
+        set {
+            objc_setAssociatedObject(base, &associatedObjectCollectionViewDidItemsForBeginning, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
+        }
+        get {
+            return objc_getAssociatedObject(base, &associatedObjectCollectionViewDidItemsForBeginning) as? CollectionViewDidItemsForBeginning
+        }
+    }
     
     @available(iOS 11.0, *)
     var _collectionViewDidEndDragSession: CollectionViewDidEndDragSession? {

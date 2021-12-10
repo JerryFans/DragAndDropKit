@@ -17,6 +17,13 @@ extension Drag where Base: UICollectionView {
     }
     
     @available(iOS 11.0, *)
+    @discardableResult public func collectionViewDidItemsForBeginning(collectionViewDidItemsForBeginning: @escaping CollectionViewDidItemsForBeginning) -> Drag {
+        var muteSelf = self
+        muteSelf._collectionViewDidItemsForBeginning = collectionViewDidItemsForBeginning
+        return muteSelf
+    }
+    
+    @available(iOS 11.0, *)
     @discardableResult public func collectionViewWillBeginDragSession(collectionViewWillBeginDragSession: @escaping CollectionViewWillBeginDragSession) -> Drag {
         var muteSelf = self
         muteSelf._collectionViewWillBeginDragSession = collectionViewWillBeginDragSession
@@ -32,8 +39,13 @@ extension Drag where Base: UICollectionView {
     
     @available(iOS 11.0, *)
     @discardableResult public func enabled() -> Drag {
-        base.dragInteractionEnabled = true
-        base.dragDelegate = base
+        if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad {
+            base.dragInteractionEnabled = true
+            base.dragDelegate = base
+        } else if #available(iOS 15.0, *) {
+            base.dragInteractionEnabled = true
+            base.dragDelegate = base
+        }
         return self
     }
     
@@ -60,7 +72,7 @@ extension UICollectionView: UICollectionViewDragDelegate {
     
     @available(iOS 11.0, *)
     public func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-        return self.dragAndDropVM.dragItems(for: indexPath)
+        return self.drag._collectionViewDidItemsForBeginning?(collectionView,session,indexPath) ?? []
     }
     
 }

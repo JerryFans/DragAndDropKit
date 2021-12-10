@@ -81,7 +81,7 @@ class CustomViewController: UIViewController {
             self.networkImageView.drag.enabled()
             
             
-            self.networkVideoLabel.drag.dropSource = NetworkVideoDropSource(videoUrl: "http://image.jerryfans.com/final_memory.mp4")
+            self.networkVideoLabel.drag.dropSource = NetworkVideoDropSource(videoUrl: "http://image.jerryfans.com/test_1.mp4")
             self.networkVideoLabel.drag.enabled()
             
             self.view.drop.supportSources = [.rawImage]
