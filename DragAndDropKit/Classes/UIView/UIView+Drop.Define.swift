@@ -10,6 +10,7 @@ import UIKit
 private var associatedObjectDidReceivedDropSource: UInt8 = 0
 private var associatedObjectDidEnterDropSession: UInt8 = 0
 private var associatedObjectDidEndDropSession: UInt8 = 0
+private var associatedObjectDidExitDropSession: UInt8 = 0
 private var associatedObjectDidUpdateDropSession: UInt8 = 0
 private var associatedObjectDidPreviewForDropSession: UInt8 = 0
 private var associatedObjectWillAnimateDropSession: UInt8 = 0
@@ -29,6 +30,9 @@ public typealias DidEnterDropSession = (_ interaction: UIDropInteraction, _ sess
 
 @available(iOS 11.0, *)
 public typealias DidEndDropSession = (_ interaction: UIDropInteraction, _ session: UIDropSession) -> ()
+
+@available(iOS 11.0, *)
+public typealias DidExitDropSession = (_ interaction: UIDropInteraction, _ session: UIDropSession) -> ()
 
 public typealias DidReceivedDropSource = ([DropSource]) -> ()
 
@@ -97,6 +101,20 @@ extension Drop where Base: UIView {
         
         get {
             if let rs = objc_getAssociatedObject(base, &associatedObjectDidEndDropSession) as? DidEndDropSession {
+                return rs
+            }
+            return nil
+        }
+    }
+    
+    @available(iOS 11.0, *)
+    var _didExitDropSession: DidExitDropSession? {
+        set {
+            objc_setAssociatedObject(base, &associatedObjectDidExitDropSession, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
+        }
+        
+        get {
+            if let rs = objc_getAssociatedObject(base, &associatedObjectDidExitDropSession) as? DidExitDropSession {
                 return rs
             }
             return nil

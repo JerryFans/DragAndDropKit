@@ -25,6 +25,13 @@ extension Drop where Base: UIView {
     }
     
     @available(iOS 11.0, *)
+    @discardableResult public func didExitDropSession(didExitDropSession: @escaping DidExitDropSession) -> Drop {
+        var muteSelf = self
+        muteSelf._didExitDropSession = didExitDropSession
+        return muteSelf
+    }
+    
+    @available(iOS 11.0, *)
     @discardableResult public func didReceivedDropSource(didReceivedDropSource: @escaping DidReceivedDropSource) -> Drop {
         var muteSelf = self
         muteSelf._didReceivedDropSource = didReceivedDropSource
@@ -83,6 +90,11 @@ extension UIView: UIDropInteractionDelegate {
     @available(iOS 11.0, *)
     public func dropInteraction(_ interaction: UIDropInteraction, sessionDidEnd session: UIDropSession) {
         self.drop._didEndDropSession?(interaction,session)
+    }
+    
+    @available(iOS 11.0, *)
+    public func dropInteraction(_ interaction: UIDropInteraction, sessionDidExit session: UIDropSession) {
+        self.drop._didExitDropSession?(interaction,session)
     }
     
     @available(iOS 11.0, *)

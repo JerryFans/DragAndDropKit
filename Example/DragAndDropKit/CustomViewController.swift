@@ -21,6 +21,8 @@ class CustomImgView: UIImageView {
 
 class CustomViewController: UIViewController {
     
+    var isMatch = false
+    
     lazy var imageView: CustomImgView = {
         let imageView = CustomImgView()
         imageView.frame = CGRect(x: 210, y: 100, width: 150, height: 150)
@@ -89,13 +91,14 @@ class CustomViewController: UIViewController {
                 for (_, item) in dropSources.enumerated() {
                     if let imageSource = item as? ImageDropSource {
                         self?.imageView.image = imageSource.image
+                        self?.imageView.layer.borderWidth = 0.0
                         break
                     }
                 }
             }.didEnterDropSession { interaction, session in
                 if session.localDragSession == nil {
                     JFPopupView.popup.toast {
-                        [.hit("请移入图片中替换"),
+                        [.hit("请移入右上角图片中替换"),
                          .withoutAnimation(true),
                          .position(.top),
                          .autoDismissDuration(.seconds(value: 3)),
@@ -113,14 +116,23 @@ class CustomViewController: UIViewController {
                 
                 if self.imageView.frame.contains(dropLocation) {
                     operation = session.localDragSession == nil ? .copy : .move
+                    self.checkIsMatch(match: true)
                 } else {
                     operation = .cancel
+                    self.checkIsMatch(match: false)
                 }
+                self.updateLayers(forDropLocation: dropLocation)
                 
                 return UIDropProposal(operation: operation)
+            }.didEndDropSession { [weak self] interaction, session in
+                guard let self = self else { return }
+                let dropLocation = session.location(in: self.view)
+                self.updateLayers(forDropLocation: dropLocation)
+                self.checkIsMatch(match: false)
+            }.didExitDropSession { [weak self] interaction, session in
+                guard let self = self else { return }
+                self.imageView.layer.borderWidth = 0.0
             }
-        } else {
-            // Fallback on earlier versions
         }
         self.view.backgroundColor = .white
         self.view.addSubview(self.imageView)
@@ -131,6 +143,25 @@ class CustomViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    @available(iOS 11.0, *)
+    func updateLayers(forDropLocation dropLocation: CGPoint) {
+        if imageView.frame.contains(dropLocation) {
+            imageView.layer.borderWidth = 2.0
+        } else if view.frame.contains(dropLocation) {
+            imageView.layer.borderWidth = 0.0
+        } else {
+            imageView.layer.borderWidth = 0.0
+        }
+    }
+    
+    func checkIsMatch(match: Bool) {
+        if self.isMatch != match {
+            UISelectionFeedbackGenerator().selectionChanged()
+        }
+        self.isMatch = match
     }
     
 }

@@ -100,6 +100,7 @@ extension UIView: UIDragInteractionDelegate {
         if self.drag._didPreviewForDragSession != nil {
             return self.drag._didPreviewForDragSession?(interaction,item,session)
         }
+        UISelectionFeedbackGenerator().selectionChanged()
         let previewImageView = UIImageView(frame: self.frame)
         if let img = self.convertToImage() {
             previewImageView.image = img
