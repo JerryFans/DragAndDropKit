@@ -102,7 +102,8 @@ class ListViewController: UIViewController {
         c.dataSource = self
         c.backgroundColor = .white
         if #available(iOS 11.0, *) {
-            c.drag.enabled().collectionViewDidItemsForBeginning { [weak self] collectionView, session, indexPath in
+            c.drag.enabled()
+            .collectionViewDidItemsForBeginning { [weak self] collectionView, session, indexPath in
                 return self?.dragAndDropVM.dragItems(for: indexPath) ?? []
             }.collectionViewWillBeginDragSession { collectionView, session in
                 JFPopup.toast(hit: "collection view will begin drag")

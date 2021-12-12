@@ -79,7 +79,12 @@ class CustomViewController: UIViewController {
                 return UITargetedDragPreview(view: previewImageView, parameters: UIDragPreviewParameters(), target: target)
             }
             
+            /*
+             你想拖拽时候给予的souce, 目前支持NetworkImageDropSource、NetworkVideoDropSource、ImageDropSource、VideoDropSource、TextDropSource五种
+             */
             self.networkImageView.drag.dropSource = NetworkImageDropSource(imageUrl: "http://image.jerryfans.com/sample.jpg")
+            
+            //开启拖拽
             self.networkImageView.drag.enabled()
             
             

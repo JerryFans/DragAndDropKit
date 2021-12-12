@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DragAndDropKit'
-  s.version          = '0.1.0'
+  s.version          = '0.2.0'
   s.summary          = 'A Swift Module Help You Drag Or Drop Source Between Different App In A Easy Way'
 
 # This description is used to generate tags and improve search results.

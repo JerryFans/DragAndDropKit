@@ -88,7 +88,7 @@ class TableViewController: UIViewController {
         ImageDropSource(image: UIImage(named: "template-5")!),
         TextDropSource(text: "I can Drag to other app"),
         TextDropSource(text: "Try It !"),
-        NetworkVideoDropSource(videoUrl: "http://image.jerryfans.com/test_1.mp4"),
+        NetworkVideoDropSource(videoUrl: "http://image.jerryfans.com/test_2.mp4"),
         NetworkImageDropSource(imageUrl: "http://image.jerryfans.com/sample.jpg")
         
     ]
