@@ -5,14 +5,9 @@
 [![Platform](https://img.shields.io/cocoapods/p/DragAndDropKit.svg?style=flat)](https://cocoapods.org/pods/DragAndDropKit)
 ![Language](https://img.shields.io/badge/language-Swift-DE5C43.svg?style=flat)
 
-## Example
+iOS15下一行代码集成跨应用间拖拽传递数据(A Simple way help you drop or drag your source (like UIImage) between different App.)
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Installation
-
-DragAndDropKit is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+## CocoaPods
 
 ```ruby
 pod 'DragAndDropKit', '0.2.0'
