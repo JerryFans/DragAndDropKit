@@ -205,7 +205,7 @@ t.drop.supportSources = [.rawImage,.rawVideo,.text]
 
 效果：
 
-![](http://image.jerryfans.com/drop_view.gif)
+![](https://github.com/JerryFans/DragAndDropKit/raw/main/drop_view.gif)
 
 拖拽本应用的data到其他实现了Drop协议的应用（亲测支持系统相册、备忘录、网页里面的文本选中范围后直接拖拽等） DragAndDropKit本组件目前支持拖拽UIImage、本地视频（路径下的视频）、网络图片、网络视频、文本等。目前支持UIView及其类UIImageView、UILabel等、以及TableView、CollectionView快速拖动其子Cell。
 
