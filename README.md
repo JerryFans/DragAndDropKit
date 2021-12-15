@@ -80,7 +80,7 @@ collectionView.drag.enabled()
             }
 ```
 
-![](http://image.jerryfans.com/drag_view.gif)   ![](http://image.jerryfans.com/drag_view_1.gif)
+![](https://github.com/JerryFans/DragAndDropKit/raw/main/drag_view.gif)   ![](https://github.com/JerryFans/DragAndDropKit/raw/main/drag_view_1.gif)
 
 ### Drop
 
