@@ -5,7 +5,9 @@
 [![Platform](https://img.shields.io/cocoapods/p/DragAndDropKit.svg?style=flat)](https://cocoapods.org/pods/DragAndDropKit)
 ![Language](https://img.shields.io/badge/language-Swift-DE5C43.svg?style=flat)
 
-iOS15下一行代码集成跨应用间拖拽传递数据(A Simple way help you drop or drag your source (like UIImage) between different App.)
+iOS15下一行代码集成跨应用间拖拽传递数据(A Simple way help you drop or drag your source (like UIImage) between different App In iOS15+ Or iPad OS 11+.)
+
+![](https://github.com/JerryFans/DragAndDropKit/raw/main/drag_view.gif)   ![](https://github.com/JerryFans/DragAndDropKit/raw/main/drag_view_1.gif)
 
 ## CocoaPods
 
